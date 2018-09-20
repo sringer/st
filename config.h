@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 //static char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static char font[] = "Inconsolata:size=12:antialias=true:autohint=false";
+static char font[] = "Inconsolata:size=18:antialias=true:autohint=false";
 static int borderpx = 2;
 
 /*
@@ -70,32 +70,31 @@ static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	/* "black", */ "#073642",
-	/* "red3", */ "#dc322f",
-	/* "green3", */ "#6fb126",
-	/* "yellow3", */ "#b58900",
-	/* "blue2", */ "#4682d0",
-	/* "magenta3", */ "#d33682",
-	/* "cyan3", */ "#2aa198",
-	/* "gray90", */ "#ded8c5",
-
-	/* 8 bright colors */
-	/* "gray50", */ "#002b36",
-	/* "red", */ "#cb4b16",
-	/* "green", */ "#b6e354",
-	/* "yellow", */ "#657b83",
-	/* "#5c5cff", */ "#729fcf",
-	/* "magenta", */ "#6c71c4",
-	/* "cyan", */ "#93a1a1",
-	/* "white", */ "#fdf6e3",
+	"#073642",  /*  0: black    */
+	"#dc322f",  /*  1: red      */
+	"#6fb126",  /*  2: green    */
+	"#b58900",  /*  3: yellow   */
+	"#4682d0",  /*  4: blue     */
+	"#d33682",  /*  5: magenta  */
+	"#2aa198",  /*  6: cyan     */
+	"#ded8c5",  /*  7: white    */
+	"#002b36",  /*  8: brblack  */
+	"#cb4b16",  /*  9: brred    */
+	"#b6e354",  /* 10: brgreen  */
+	"#657b83",  /* 11: bryellow */
+	"#729fcf",  /* 12: brblue   */
+	"#6c71c4",  /* 13: brmagenta*/
+	"#93a1a1",  /* 14: brcyan   */
+	"#fdf6e3",  /* 15: brwhite  */
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
-    /* foreground */ "#ffffff",
-    /* background */ "#252525",
+    "#ffffff",  /* foreground */
+    "#252525",  /* background */
+    "#bbbbbb",  /* dwm foreground */
+    "#222222",  /* dwm background */
 };
 
 
@@ -103,8 +102,8 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-static unsigned int defaultfg = 7;
-static unsigned int defaultbg = 0;
+static unsigned int defaultfg = 259;
+static unsigned int defaultbg = 260;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -151,6 +150,8 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_K,           xzoom,          {.f = +1} },
+	{ MODKEY|ShiftMask,     XK_J,           xzoom,          {.f = -1} },
 	{ MODKEY|ShiftMask,     XK_Prior,       xzoom,          {.f = +1} },
 	{ MODKEY|ShiftMask,     XK_Next,        xzoom,          {.f = -1} },
 	{ MODKEY|ShiftMask,     XK_Home,        xzoomreset,     {.f =  0} },
